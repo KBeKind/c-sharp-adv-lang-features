@@ -1,0 +1,15 @@
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\bin\Debug\net8.0\WarehouseManagementSystem.Business.deps.json
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\bin\Debug\net8.0\WarehouseManagementSystem.Business.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\bin\Debug\net8.0\WarehouseManagementSystem.Business.pdb
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\bin\Debug\net8.0\WarehouseManagementSystem.Domain.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\bin\Debug\net8.0\WarehouseManagementSystem.Domain.pdb
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.csproj.AssemblyReference.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.AssemblyInfoInputs.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.AssemblyInfo.cs
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.csproj.CoreCompileInputs.cache
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.csproj.CopyComplete
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\refint\WarehouseManagementSystem.Business.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.pdb
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\ref\WarehouseManagementSystem.Business.dll
