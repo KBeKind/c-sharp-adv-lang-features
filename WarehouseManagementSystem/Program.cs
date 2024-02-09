@@ -28,7 +28,8 @@ bool SendMessageToWarehouse(Order order)
 
 var processor = new OrderProcessor
 {
-	OnOrderInitialized = SendMessageToWarehouse,
+	//OnOrderInitialized = SendMessageToWarehouse,
+	OnOrderInitialized = (order) =>  order.IsReadyForShipment,
 	OnOrderTest = OrderTestMethod
 };
 
@@ -74,11 +75,27 @@ Console.WriteLine("******************");
 chain -= LogOrderProcessCompleted;
 processor.Process(order, chain);
 
+Console.WriteLine("******************");
 
-//OrderProcessor.ProcessCompleted chain2 = One;
+OrderProcessor.ProcessCompleted onComplete = (order) => { Console.WriteLine("ORDER COMPLETE");  };
+
+processor.Process(order, onComplete);
+Console.WriteLine("******************");
+
+OrderProcessor.ProcessCompleted chain2 = (order) => { Console.WriteLine("One"); };
+chain2 += (order) => { Console.WriteLine("Two"); };
+chain2 += (order) => { Console.WriteLine("Three"); };
+
+chain2(order);
+Console.WriteLine("******************");
+
+
+
 //chain2 += Two;
 //chain2 += Three;
 
 //void One(Order order) => Console.WriteLine("One");
 //void Two(Order order) => Console.WriteLine("Two");
 //void Three(Order order) => Console.WriteLine("Three");
+
+
