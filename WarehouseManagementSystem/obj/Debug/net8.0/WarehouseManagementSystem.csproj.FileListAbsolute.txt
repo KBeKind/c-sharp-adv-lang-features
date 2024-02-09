@@ -19,3 +19,4 @@ C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseM
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem\obj\Debug\net8.0\WarehouseManagementSystem.pdb
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem\obj\Debug\net8.0\WarehouseManagementSystem.genruntimeconfig.cache
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem\obj\Debug\net8.0\ref\WarehouseManagementSystem.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem\obj\Debug\net8.0\WarehouseManagementSystem.sourcelink.json
