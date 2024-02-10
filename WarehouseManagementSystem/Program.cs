@@ -1,4 +1,5 @@
 ﻿
+using System.Text.Json;
 using WarehouseManagementSystem.Business;
 using WarehouseManagementSystem.Domain;
 using WarehouseManagementSystem.Domain.Extensions;
@@ -15,10 +16,45 @@ var order = new Order
 	}
 };
 
+var order2 = new Order
+{
+	LineItems = new[]
+	{
+		new Item { Name = "P1", Price = 90 },
+		new Item { Name = "P2", Price = 100 },
+		new Item { Name = "P4", Price = 110 },
+		new Item { Name = "P5", Price = 120 }
+	}
+};
+
+var order3 = new Order
+{
+	LineItems = new[]
+	{
+		new Item { Name = "S1", Price = 20 },
+		new Item { Name = "S2", Price = 30 },
+		new Item { Name = "S4", Price = 40 },
+		new Item { Name = "S5", Price = 50 }
+	}
+};
+
+
+
 var isReadyForShipment = (Order order) =>
 {
 	return order.IsReadyForShipment;
 };
+
+
+//List<Order> orders = new List<Order>
+//{
+//	order,
+//	order2,
+//	order3,
+
+//};
+
+IEnumerable<Order> orders = JsonSerializer.Deserialize<Order[]>(File.ReadAllText("orders.json"));
 
 
 bool SendMessageToWarehouse(Order order)
@@ -120,7 +156,7 @@ Func<Order, bool> aFunc = (Order order) => true;
 Func<Order, bool> aFunc2 = SendMessageToWarehouse;
 Func<Order, bool> aFunc3 = (Order order) => order.IsReadyForShipment;
 
-Console.WriteLine("******************");
+// Console.WriteLine("******************");
 
 
 var processor3 = new OrderProcessor { };
@@ -154,14 +190,45 @@ void Log(object sender, EventArgs args)
 
 //Console.WriteLine("******************");
 
-foreach (var item in order.LineItems.Find(item => item.Price > 60))
-	{
-	Console.WriteLine($"{item.Name}: {item.Price}");
-	}
-Console.WriteLine("******************");
+//foreach (var item in order.LineItems.Find(item => item.Price > 60))
+//	{
+//	Console.WriteLine($"{item.Name}: {item.Price}");
+//	}
+//Console.WriteLine("******************");
 
-Console.WriteLine(order.GenerateReport());
-Console.WriteLine("******************");
+//Console.WriteLine(order.GenerateReport());
+//Console.WriteLine("******************");
 
-Console.WriteLine(order.GenerateReport("Mikey"));
-Console.WriteLine("******************");
+//Console.WriteLine(order.GenerateReport("Mikey"));
+//Console.WriteLine("******************");
+
+var subset = new { order.OrderNumber, order.Total, AveragePrice =order.LineItems.Average(item => item.Price) };
+
+//Console.WriteLine($"{subset.AveragePrice}");
+//Console.WriteLine("******************");
+
+var instance = new {
+	Total = 100,
+	AmountOfItems = 10
+};
+
+
+var instance2 = new
+{
+	Total = 100,
+	AmountOfItems = 10
+};
+
+
+Console.WriteLine(instance.Equals(instance2));
+
+
+// LINQ METHOD SYNTAX
+var totals = orders.Select(order => new { order.Total });
+
+// LINK QUERY SYNTAX
+var totals2 = from anOrder in orders select new { anOrder.Total };
+
+
+
+processor.Process(orders);

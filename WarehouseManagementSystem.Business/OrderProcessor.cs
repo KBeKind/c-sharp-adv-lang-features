@@ -1,4 +1,5 @@
-﻿using WarehouseManagementSystem.Business;
+﻿using System.Runtime.CompilerServices;
+using WarehouseManagementSystem.Business;
 using WarehouseManagementSystem.Domain;
 
 namespace WarehouseManagementSystem.Business
@@ -80,6 +81,43 @@ namespace WarehouseManagementSystem.Business
 			});
 		}
 
+
+        public void Process(IEnumerable<Order> orders)
+        {
+            var summaries = orders.Select(order =>
+            {
+                return new {
+                
+                    Order = order.OrderNumber,
+                    Items = order.LineItems.Count(),
+                    Total = order.LineItems.Sum(item => item.Price),
+                    LineItems = order.LineItems
+                
+                };
+            });
+
+            var orderedSummaries = summaries.OrderBy(summary => summary.Total);
+
+            var aSummary = orderedSummaries.First();
+
+            var aSummaryWithTax = aSummary with {
+                Total = aSummary.Total * 1.25m
+            };
+
+            // IF USING AN ANON TYPE THEN IF IT IS A COLLECTION IT IS PASSED BY REFERENCE
+            // STRINGS AND NUMBERS ARE PASSED BY VALUE
+            var item = aSummaryWithTax.LineItems.First();
+            item.Name = "testname";
+
+            Console.WriteLine($"original: {aSummary.LineItems.First().Name} , copy: {item.Name}");
+
+            foreach (var summary in orderedSummaries)
+            {
+				Console.WriteLine("**********************");
+				Console.WriteLine($"Order {summary.Order} has {summary.Items} items and a total of {summary.Total}");
+                
+            }
+        }
 	}
 }
 
