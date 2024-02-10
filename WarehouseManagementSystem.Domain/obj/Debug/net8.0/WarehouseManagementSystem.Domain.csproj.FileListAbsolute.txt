@@ -9,3 +9,4 @@ C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseM
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Domain\obj\Debug\net8.0\refint\WarehouseManagementSystem.Domain.dll
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Domain\obj\Debug\net8.0\WarehouseManagementSystem.Domain.pdb
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Domain\obj\Debug\net8.0\ref\WarehouseManagementSystem.Domain.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Domain\obj\Debug\net8.0\WarehouseManagementSystem.Domain.sourcelink.json

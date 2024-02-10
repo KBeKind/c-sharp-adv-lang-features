@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Numerics;
+using System.Runtime.CompilerServices;
 using WarehouseManagementSystem.Business;
 using WarehouseManagementSystem.Domain;
 
@@ -29,7 +30,7 @@ namespace WarehouseManagementSystem.Business
         protected virtual void OnOrderCreated(OrderCreatedEventArgs args)
         {
             // Console.WriteLine for test only
-			Console.WriteLine(args.NewTotal);
+			//Console.WriteLine(args.NewTotal);
 
 			OrderCreated?.Invoke(this, args);
         }
@@ -82,18 +83,30 @@ namespace WarehouseManagementSystem.Business
 		}
 
 
-        public void Process(IEnumerable<Order> orders)
+        public IEnumerable<(Guid orderNumber, int itemCount , decimal total, IEnumerable<Item> items)> Process(IEnumerable<Order> orders)
         {
+            // AS ANON TYPE
+            //var summaries = orders.Select(order =>
+            //{
+            //    return new {
+
+            //        Order = order.OrderNumber,
+            //        Items = order.LineItems.Count(),
+            //        Total = order.LineItems.Sum(item => item.Price),
+            //        LineItems = order.LineItems
+
+            //    };
+            //});
+
+            // AS TUPLE
             var summaries = orders.Select(order =>
             {
-                return new {
-                
-                    Order = order.OrderNumber,
-                    Items = order.LineItems.Count(),
-                    Total = order.LineItems.Sum(item => item.Price),
-                    LineItems = order.LineItems
-                
-                };
+                return (
+                    Order : order.OrderNumber,
+                    Items : order.LineItems.Count(),
+                    Total : order.LineItems.Sum(item => item.Price),
+                    LineItems : order.LineItems
+                );
             });
 
             var orderedSummaries = summaries.OrderBy(summary => summary.Total);
@@ -109,14 +122,17 @@ namespace WarehouseManagementSystem.Business
             var item = aSummaryWithTax.LineItems.First();
             item.Name = "testname";
 
-            Console.WriteLine($"original: {aSummary.LineItems.First().Name} , copy: {item.Name}");
+            //Console.WriteLine($"original: {aSummary.LineItems.First().Name} , copy: {item.Name}");
 
-            foreach (var summary in orderedSummaries)
-            {
-				Console.WriteLine("**********************");
-				Console.WriteLine($"Order {summary.Order} has {summary.Items} items and a total of {summary.Total}");
-                
-            }
+            //        foreach (var summary in orderedSummaries)
+            //        {
+            //Console.WriteLine("**********************");
+            //Console.WriteLine($"Order {summary.Order} has {summary.Items} items and a total of {summary.Total}");
+
+            //        }
+
+            // return aSummaryWithTax;
+            return orderedSummaries;
         }
 	}
 }

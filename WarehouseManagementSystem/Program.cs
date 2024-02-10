@@ -13,7 +13,7 @@ var order = new Order
 		new Item { Name = "PS2", Price = 60 },
 		new Item { Name = "PS4", Price = 70 },
 		new Item { Name = "PS5", Price = 80 }
-	}
+	},
 };
 
 var order2 = new Order
@@ -220,8 +220,7 @@ var instance2 = new
 };
 
 
-Console.WriteLine(instance.Equals(instance2));
-
+//Console.WriteLine(instance.Equals(instance2));
 
 // LINQ METHOD SYNTAX
 var totals = orders.Select(order => new { order.Total });
@@ -230,5 +229,136 @@ var totals = orders.Select(order => new { order.Total });
 var totals2 = from anOrder in orders select new { anOrder.Total };
 
 
+//processor.Process(orders);
 
-processor.Process(orders);
+
+//Console.WriteLine("******************");
+
+var aTuple = (order.OrderNumber, order.LineItems, Sum: order.LineItems.Sum(item => item.Price) );
+
+//Console.WriteLine(aTuple);
+
+(Guid orderNumber, IEnumerable<Item> items, decimal Sum) aTuple2 = (order.OrderNumber, order.LineItems, order.LineItems.Sum(item => item.Price));
+
+//Console.WriteLine(aTuple2);
+
+//Console.WriteLine("******************");
+
+//Console.WriteLine($"order number:{aTuple.OrderNumber}, total:{aTuple.Sum}");
+
+//Console.WriteLine($"order number:{aTuple2.orderNumber}, total:{aTuple2.Sum}");
+
+var aAnonymousType = new { order.OrderNumber, order.LineItems, Sum = order.LineItems.Sum(item => item.Price) };
+
+
+
+
+//Console.WriteLine("******************");
+
+var json = JsonSerializer.Serialize(aTuple, options: new() { IncludeFields = true });
+
+//Console.WriteLine(json);
+
+//(Guid orderNumber, IEnumerable<Item> items, decimal Sum) = (order.OrderNumber, order.LineItems, order.LineItems.Sum(item => item.Price));
+
+//(var orderNumber, var items, var Sum) = (order.OrderNumber, order.LineItems, order.LineItems.Sum(item => item.Price));
+
+//var (orderNumber, items, Sum) = (order.OrderNumber, order.LineItems, order.LineItems.Sum(item => item.Price));
+
+//Guid orderNumber;
+//decimal sum;
+
+//(orderNumber, var items, sum) = (order.OrderNumber, order.LineItems, order.LineItems.Sum(item => item.Price));
+
+//Console.WriteLine($"order number:{orderNumber}, items:{items}, total:{sum}");
+
+//(orderNumber, _, sum) = (order.OrderNumber, order.LineItems, order.LineItems.Sum(item => item.Price));
+
+//Console.WriteLine($"order number:{orderNumber}, total:{sum}");
+
+
+//Console.WriteLine("******************");
+
+
+var result = processor.Process(orders);
+//var result2 = processor.Process(orders);
+//var result2 = result with { total = 10 };
+
+//Console.WriteLine("******************");
+
+//Console.WriteLine($"Are these equal? {result == result2}");
+
+//Console.WriteLine($"ORDER NUMBER:{result.orderNumber}, ITEM COUNT:{result.itemCount}, TOTAL:{result.total}, ITEMS:{result.items}");
+
+//Console.WriteLine("******************");
+
+//var (id, items, total, _) = processor.Process(orders);
+
+//Action<(Guid id, int itemCount)> log = (tuple) =>
+//{
+//	Console.WriteLine(tuple.id.ToString());
+//};
+//onsole.WriteLine("******************");
+
+//Console.WriteLine(result.GenerateReport());
+
+//Console.WriteLine("******************");
+
+//(Guid, int, decimal, IEnumerable<Item>) aTuple3 = (Guid.Empty, 0, 0m, Enumerable.Empty<Item>());
+
+//Console.WriteLine(aTuple3.GenerateReport());
+
+//Console.WriteLine("******************");
+
+
+//foreach (var summary in result.ToList())
+//{
+//    Console.WriteLine(summary.GenerateReport());
+//	Console.WriteLine("******************");
+
+//}
+
+//Console.WriteLine("******************");
+
+//foreach (var summary in processor.Process(orders))
+//{
+//    Console.WriteLine(summary.GenerateReport());
+//	Console.WriteLine("******************");
+
+//}
+
+
+//var (total, isReady) = order;
+
+//var (total, isReady, items) = order;
+
+//var (total, isReady, _) = order;
+
+
+//Console.WriteLine($"TOTAL:{total}, READY:{isReady}");
+
+//Console.WriteLine($"TOTAL:{total}, READY:{isReady}, ITEMS:{items}");
+
+//Console.WriteLine("******************");
+
+
+//if (order is (total: > 0, true))
+//{
+//	Console.WriteLine("Order is ready");
+//}
+
+
+Console.WriteLine("******************");
+
+
+//var (orderNumber, total, items, averagePrice) = order;
+
+//Console.WriteLine($"ORDER NUMBER:{orderNumber}, TOTAL:{total}, ITEMS:{items}, AVERAGE PRICE:{averagePrice}");
+
+
+//var aDictionary = new Dictionary<string, Order>();
+
+//foreach (var (orderNumber, theOrder) in aDictionary)
+//{
+
+//}
