@@ -13,3 +13,4 @@ C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseM
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\refint\WarehouseManagementSystem.Business.dll
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.pdb
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\ref\WarehouseManagementSystem.Business.dll
+C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Business\obj\Debug\net8.0\WarehouseManagementSystem.Business.sourcelink.json

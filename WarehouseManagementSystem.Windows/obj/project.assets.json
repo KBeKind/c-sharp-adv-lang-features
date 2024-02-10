@@ -1,11 +1,48 @@
 {
   "version": 3,
   "targets": {
-    "net8.0-windows7.0": {}
+    "net8.0-windows7.0": {
+      "WarehouseManagementSystem.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "WarehouseManagementSystem.Domain": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WarehouseManagementSystem.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WarehouseManagementSystem.Business.dll": {}
+        }
+      },
+      "WarehouseManagementSystem.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/WarehouseManagementSystem.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WarehouseManagementSystem.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WarehouseManagementSystem.Business/1.0.0": {
+      "type": "project",
+      "path": "../WarehouseManagementSystem.Business/WarehouseManagementSystem.Business.csproj",
+      "msbuildProject": "../WarehouseManagementSystem.Business/WarehouseManagementSystem.Business.csproj"
+    },
+    "WarehouseManagementSystem.Domain/1.0.0": {
+      "type": "project",
+      "path": "../WarehouseManagementSystem.Domain/WarehouseManagementSystem.Domain.csproj",
+      "msbuildProject": "../WarehouseManagementSystem.Domain/WarehouseManagementSystem.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0-windows7.0": []
+    "net8.0-windows7.0": [
+      "WarehouseManagementSystem.Business >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\kyler\\.nuget\\packages\\": {}
@@ -33,7 +70,11 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\kyler\\Desktop\\DOTNET-PRACTICE\\CSharpAdvancedLanguageFeatures\\WarehouseManagementSystem\\WarehouseManagementSystem.Business\\WarehouseManagementSystem.Business.csproj": {
+              "projectPath": "C:\\Users\\kyler\\Desktop\\DOTNET-PRACTICE\\CSharpAdvancedLanguageFeatures\\WarehouseManagementSystem\\WarehouseManagementSystem.Business\\WarehouseManagementSystem.Business.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,4 +1,4 @@
-﻿using System.Transactions;
+﻿using WarehouseManagementSystem.Business;
 using WarehouseManagementSystem.Domain;
 
 namespace WarehouseManagementSystem.Business
@@ -6,14 +6,30 @@ namespace WarehouseManagementSystem.Business
     public class OrderProcessor
     {
 
-        public delegate bool OrderInitialized(Order order);
-        public delegate OrderInitialized OrderTest();
-        public delegate void ProcessCompleted(Order order);
+        //public delegate bool OrderInitialized(Order order);
+        //public delegate OrderInitialized OrderTest();
+        //public delegate void ProcessCompleted(Order order);
 
-        public OrderInitialized OnOrderInitialized { get; set; }
-        public OrderTest OnOrderTest { get; set; }
+        //public OrderInitialized OnOrderInitialized { get; set; }
+        //public OrderTest OnOrderTest { get; set; }
 
         
+        public Func<Order, bool> OnOrderInitialized { get; set; }
+
+
+        public event EventHandler<OrderProcessCompletedEventArgs> OrderProcessCompleted;
+        protected virtual void OnOrderProcessCompleted(OrderProcessCompletedEventArgs args)
+        {
+            OrderProcessCompleted?.Invoke(this, args);
+        }
+
+
+        public event EventHandler<OrderCreatedEventArgs> OrderCreated;
+        protected virtual void OnOrderCreated(OrderCreatedEventArgs args)
+        {
+            OrderCreated?.Invoke(this, args);
+        }
+
 
         private void Initialize(Order order)
 		{
@@ -25,11 +41,23 @@ namespace WarehouseManagementSystem.Business
             
         }
 
-        public void Process(Order order, 
-            ProcessCompleted onCompleted = default)
+        public void Process(Order order)
         {
             Initialize(order);
-            onCompleted?.Invoke(order);
+
+            OnOrderCreated(new OrderCreatedEventArgs
+            {
+                Order = order,
+                OldTotal = 100,
+                NewTotal = 80
+            });
+
+            OnOrderProcessCompleted(new OrderProcessCompletedEventArgs
+            {
+                Order = order
+            });
         }
     }
 }
+
+

@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WarehouseManagementSystem.Business\WarehouseManagementSystem.Business.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="albums\Container-Enthusiasm-TalkDocker-To-Me.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

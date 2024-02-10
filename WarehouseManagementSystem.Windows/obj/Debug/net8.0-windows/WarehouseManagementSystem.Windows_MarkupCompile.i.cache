@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 C:\Users\kyler\Desktop\DOTNET-PRACTICE\CSharpAdvancedLanguageFeatures\WarehouseManagementSystem\WarehouseManagementSystem.Windows\App.xaml
-11407045341
+21192265902
 
-5-268681745
-198-294894759
-MainWindow.xaml;
+6-1220035645
+200-1927535932
+MainWindow.xaml;ReceiptWindow.xaml;
 
-False
+True
 
