@@ -30,7 +30,7 @@ var processor = new OrderProcessor
 {
 	//OnOrderInitialized = SendMessageToWarehouse,
 	OnOrderInitialized = (order) =>  order.IsReadyForShipment,
-	OnOrderTest = OrderTestMethod
+	//OnOrderTest = OrderTestMethod
 };
 
 //var onCompleted = (Order order) =>
@@ -38,11 +38,11 @@ var processor = new OrderProcessor
 //	Console.WriteLine($"Processed {order.OrderNumber}");
 //};
 
-OrderInitialized OrderTestMethod()
-{
-	Console.WriteLine("Order Test Method");
-	return SendMessageToWarehouse;
-}
+//OrderInitialized OrderTestMethod()
+//{
+//	Console.WriteLine("Order Test Method");
+//	return SendMessageToWarehouse;
+//}
 
 //processor.OnOrderTest()?.Invoke(order);
 //processor.OnOrderTest()(order);
@@ -65,30 +65,46 @@ void UpdateStock(Order order)
 }
 
 
-OrderProcessor.ProcessCompleted chain = SendConfirmationEmail;
+//OrderProcessor.ProcessCompleted chain = SendConfirmationEmail;
+Action<Order> chain = SendConfirmationEmail;
+
 chain += LogOrderProcessCompleted;
 chain += UpdateStock;
-processor.Process(order, chain);
+//processor.Process(order, chain);
 
-Console.WriteLine("******************");
+//Console.WriteLine("******************");
 
 chain -= LogOrderProcessCompleted;
-processor.Process(order, chain);
+//processor.Process(order, chain);
 
-Console.WriteLine("******************");
+//Console.WriteLine("******************");
 
-OrderProcessor.ProcessCompleted onComplete = (order) => { Console.WriteLine("ORDER COMPLETE");  };
+//OrderProcessor.ProcessCompleted onComplete = (order) => { Console.WriteLine("ORDER COMPLETE");  };
+Action<Order> onComplete = (order) => { Console.WriteLine("ORDER COMPLETE"); };
 
-processor.Process(order, onComplete);
-Console.WriteLine("******************");
 
-OrderProcessor.ProcessCompleted chain2 = (order) => { Console.WriteLine("One"); };
+
+Func<Order, bool> onComplete2 = (order) => { return order.IsReadyForShipment; };
+
+var processor2 = new OrderProcessor
+{
+	OnOrderInitialized = onComplete2,
+};
+
+
+
+
+//processor.Process(order, onComplete);
+//Console.WriteLine("******************");
+
+//OrderProcessor.ProcessCompleted chain2 = (order) => { Console.WriteLine("One"); };
+Action<Order> chain2 = (order) => { Console.WriteLine("One"); };
+
 chain2 += (order) => { Console.WriteLine("Two"); };
 chain2 += (order) => { Console.WriteLine("Three"); };
 
-chain2(order);
-Console.WriteLine("******************");
-
+//chain2(order);
+//Console.WriteLine("******************");
 
 
 //chain2 += Two;
@@ -99,3 +115,34 @@ Console.WriteLine("******************");
 //void Three(Order order) => Console.WriteLine("Three");
 
 
+Func<Order, bool> aFunc = (Order order) => true;
+Func<Order, bool> aFunc2 = SendMessageToWarehouse;
+Func<Order, bool> aFunc3 = (Order order) => order.IsReadyForShipment;
+
+Console.WriteLine("******************");
+
+
+var processor3 = new OrderProcessor { };
+
+var onCompleted = (Order order) =>
+{
+	Console.WriteLine($"Processed {order.OrderNumber}");
+};
+
+
+processor3.OrderCreated += (sender, args) =>
+{
+	Thread.Sleep(1000);
+	Console.WriteLine("1");
+};
+processor3.OrderCreated += Log;
+
+void Log(object sender, EventArgs args)
+{
+    Console.WriteLine("Log method call");
+    Console.WriteLine(args.GetType().Name);
+}
+
+
+
+processor3.Process(order);
