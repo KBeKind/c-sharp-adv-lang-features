@@ -27,7 +27,10 @@ namespace WarehouseManagementSystem.Business
         public event EventHandler<OrderCreatedEventArgs> OrderCreated;
         protected virtual void OnOrderCreated(OrderCreatedEventArgs args)
         {
-            OrderCreated?.Invoke(this, args);
+            // Console.WriteLine for test only
+			Console.WriteLine(args.NewTotal);
+
+			OrderCreated?.Invoke(this, args);
         }
 
 
@@ -57,7 +60,27 @@ namespace WarehouseManagementSystem.Business
                 Order = order
             });
         }
-    }
+
+		public void Process(Order order, decimal discount)
+		{
+			Initialize(order);
+
+            OnOrderCreated(new OrderCreatedEventArgs
+            {
+                Order = order,
+                OldTotal = 100,
+                NewTotal = 100 - discount
+            });
+
+            
+
+            OnOrderProcessCompleted(new OrderProcessCompletedEventArgs
+			{
+				Order = order
+			});
+		}
+
+	}
 }
 
 
