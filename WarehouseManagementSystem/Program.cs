@@ -1,6 +1,7 @@
 ﻿
 using WarehouseManagementSystem.Business;
 using WarehouseManagementSystem.Domain;
+using WarehouseManagementSystem.Domain.Extensions;
 using static WarehouseManagementSystem.Business.OrderProcessor;
 
 var order = new Order
@@ -145,4 +146,22 @@ void Log(object sender, EventArgs args)
 
 
 
-processor3.Process(order);
+//processor3.Process(order);
+
+
+//processor3.Process(order, 30);
+
+
+//Console.WriteLine("******************");
+
+foreach (var item in order.LineItems.Find(item => item.Price > 60))
+	{
+	Console.WriteLine($"{item.Name}: {item.Price}");
+	}
+Console.WriteLine("******************");
+
+Console.WriteLine(order.GenerateReport());
+Console.WriteLine("******************");
+
+Console.WriteLine(order.GenerateReport("Mikey"));
+Console.WriteLine("******************");
