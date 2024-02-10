@@ -19,12 +19,12 @@
                 FontWeight="Bold" 
                 Click="ProcessOrder_Click">Process Order</Button>
 
-        <DataGrid x:Name="Orders" ColumnWidth="*" AutoGenerateColumns="False">
-            <DataGrid.Columns>
+        <DataGrid x:Name="Orders" ColumnWidth="*" AutoGenerateColumns="True">
+            <!--<DataGrid.Columns>
                 <DataGridTextColumn Header="OrderNumber" Binding="{Binding OrderNumber}" />
                 <DataGridCheckBoxColumn Header="IsReadyForShipment"  Binding="{Binding IsReadyForShipment}" />
                 <DataGridTextColumn Header="Total" Binding="{Binding Total}" />
-            </DataGrid.Columns>
+            </DataGrid.Columns>-->
         </DataGrid>
     </Grid>
 </Window>
