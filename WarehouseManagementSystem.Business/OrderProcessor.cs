@@ -134,6 +134,29 @@ namespace WarehouseManagementSystem.Business
             // return aSummaryWithTax;
             return orderedSummaries;
         }
+
+
+        private decimal CalculateFreightCost(Order order)
+            => order.ShippingProvider switch
+            {
+				//SwedishPostalServiceShippingProvider { DeliverNextDay: true } => 100m,
+				//SwedishPostalServiceShippingProvider => 0m,
+				//_ => 50m
+
+				//SwedishPostalServiceShippingProvider { DeliverNextDay: true } provider => provider.FreightCost + 50m,
+				//SwedishPostalServiceShippingProvider provider => provider.FreightCost -50m,
+				//var provider => provider?.FreightCost ?? 50m
+
+
+				SwedishPostalServiceShippingProvider { DeliverNextDay: true } provider => provider.FreightCost + 50m,
+				SwedishPostalServiceShippingProvider provider => provider.FreightCost - 50m,
+				var provider => provider?.FreightCost ?? 50m
+
+			};
+          
+        
+
+
 	}
 }
 

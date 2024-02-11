@@ -5,38 +5,38 @@ using WarehouseManagementSystem.Domain;
 using WarehouseManagementSystem.Domain.Extensions;
 using static WarehouseManagementSystem.Business.OrderProcessor;
 
-var order = new Order
-{
-	LineItems = new[]
+var order = new Order( new ShippingProvider() { Name = "USPS"},
+	new[]
 	{
 		new Item { Name = "PS1", Price = 50 },
 		new Item { Name = "PS2", Price = 60 },
 		new Item { Name = "PS4", Price = 70 },
 		new Item { Name = "PS5", Price = 80 }
-	},
-};
+	}, true );
 
-var order2 = new Order
-{
-	LineItems = new[]
+
+
+var order2 = new Order(new ShippingProvider() { Name = "UPS" },
+
+	new[]
 	{
 		new Item { Name = "P1", Price = 90 },
 		new Item { Name = "P2", Price = 100 },
 		new Item { Name = "P4", Price = 110 },
 		new Item { Name = "P5", Price = 120 }
-	}
-};
+	},	true);
 
-var order3 = new Order
-{
-	LineItems = new[]
-	{
-		new Item { Name = "S1", Price = 20 },
-		new Item { Name = "S2", Price = 30 },
-		new Item { Name = "S4", Price = 40 },
-		new Item { Name = "S5", Price = 50 }
-	}
-};
+
+//var order3 = new Order
+//{
+//	LineItems = new[]
+//	{
+//		new Item { Name = "S1", Price = 20 },
+//		new Item { Name = "S2", Price = 30 },
+//		new Item { Name = "S4", Price = 40 },
+//		new Item { Name = "S5", Price = 50 }
+//	}
+//};
 
 
 
@@ -226,7 +226,7 @@ var instance2 = new
 var totals = orders.Select(order => new { order.Total });
 
 // LINK QUERY SYNTAX
-var totals2 = from anOrder in orders select new { anOrder.Total };
+//var totals2 = from anOrder in orders select new { anOrder.Total };
 
 
 //processor.Process(orders);
@@ -348,7 +348,7 @@ var result = processor.Process(orders);
 //}
 
 
-Console.WriteLine("******************");
+//Console.WriteLine("******************");
 
 
 //var (orderNumber, total, items, averagePrice) = order;
@@ -362,3 +362,83 @@ Console.WriteLine("******************");
 //{
 
 //}
+
+
+//Order anOrder = new Order
+//{
+//	ShippingProvider = new ShippingProvider()
+//	{
+//		FreightCost = 50
+//	},
+//	LineItems = new[]
+//	{
+//		new Item { Name = "PS1", Price = 20 },
+//		new Item { Name = "PS2", Price = 25 },
+//		new Item { Name = "PS3", Price = 35 },
+//		new Item { Name = "PS4", Price = 35 },
+//	},
+	
+
+//};
+//Console.WriteLine("******************");
+
+//Console.WriteLine(anOrder.GenerateReport());
+
+//PriorityOrder prioOrder = new PriorityOrder
+//{
+//	ShippingProvider = new ShippingProvider()
+//	{
+//		FreightCost = 50
+//	},
+//	LineItems = new[]
+//	{
+//		new Item { Name = "PS1", Price = 20 },
+//	},
+//};
+
+//Console.WriteLine("******************");
+
+//Console.WriteLine(prioOrder.GenerateReport());
+
+var firstCustomer = new Customer("Duder", "Man")
+{
+	Address = new Address("123 Main St", "Anytown", "CA", "12345")
+};
+
+var second = new Customer("Duder", "Man")
+{
+	Address = new Address("123 Main St", "Anytown", "CA", "12345")
+};
+
+//var second = new PriorityCustomer("Duder", "Man")
+//{
+//	Address = new Address("123 Main St", "Anytown", "CA", "12345")
+//};
+
+//var second = firstCustomer with { Firstname = "Duder2" };
+
+//Console.WriteLine($"Are these equal? {firstCustomer.Equals(second)}");
+
+//Console.WriteLine(order.GenerateReport());
+
+//Console.WriteLine("******************");
+
+
+var orderAsJson = JsonSerializer.Serialize(order, options: new() { WriteIndented = true});
+
+//Console.WriteLine(orderAsJson);
+
+Console.WriteLine("******************");
+
+var instanceFromJson = JsonSerializer.Deserialize<Order>(orderAsJson);
+
+//Console.WriteLine(instanceFromJson.GenerateReport());
+
+
+CancelledOrder cancelledOrder = new CancelledOrder(new ShippingProvider(), new[] { new Item { Name = "PS1", Price = 20 } });
+
+Console.WriteLine(order.ToString());
+Console.WriteLine("******************");
+
+
+Console.WriteLine(cancelledOrder.ToString());
