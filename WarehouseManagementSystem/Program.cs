@@ -396,7 +396,7 @@ var result = processor.Process(orders);
 //	},
 //};
 
-Console.WriteLine("******************");
+//Console.WriteLine("******************");
 
 //Console.WriteLine(prioOrder.GenerateReport());
 
@@ -417,6 +417,28 @@ var second = new Customer("Duder", "Man")
 
 //var second = firstCustomer with { Firstname = "Duder2" };
 
-Console.WriteLine($"Are these equal? {firstCustomer.Equals(second)}");
+//Console.WriteLine($"Are these equal? {firstCustomer.Equals(second)}");
 
-Console.WriteLine(order.GenerateReport());
+//Console.WriteLine(order.GenerateReport());
+
+//Console.WriteLine("******************");
+
+
+var orderAsJson = JsonSerializer.Serialize(order, options: new() { WriteIndented = true});
+
+//Console.WriteLine(orderAsJson);
+
+Console.WriteLine("******************");
+
+var instanceFromJson = JsonSerializer.Deserialize<Order>(orderAsJson);
+
+//Console.WriteLine(instanceFromJson.GenerateReport());
+
+
+CancelledOrder cancelledOrder = new CancelledOrder(new ShippingProvider(), new[] { new Item { Name = "PS1", Price = 20 } });
+
+Console.WriteLine(order.ToString());
+Console.WriteLine("******************");
+
+
+Console.WriteLine(cancelledOrder.ToString());
