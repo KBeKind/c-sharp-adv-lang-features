@@ -1,15 +1,20 @@
-﻿using System.Text;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Text;
 using System.Text.Json.Serialization;
 
 namespace WarehouseManagementSystem.Domain
 {
 	//public record Order([property: JsonPropertyName("ShippingGroup")]ShippingProvider ShippingProvider,[property: JsonIgnore] IEnumerable<Item> LineItems, bool IsReadyForShipment = true)
 
-	public record Order([property: JsonPropertyName("ShippingGroup")] ShippingProvider ShippingProvider, IEnumerable<Item> LineItems, bool IsReadyForShipment = true)
+	public record Order(/*[AllowNull]*/ ShippingProvider ShippingProvider/* = default*/, IEnumerable<Item> LineItems, bool IsReadyForShipment = true)
 
 	{
 		public Guid OrderNumber { get; init; } = Guid.NewGuid();
 		public decimal Total => LineItems?.Sum(i => i.Price) ?? 0;
+
+		//[property: JsonPropertyName("ShippingGroup")]
+		//public ShippingProvider ShippingProvider { get; init; } = ShippingProvider ?? new();
+
 		//public Order()
 		//      {
 		//          OrderNumber = Guid.NewGuid();

@@ -435,10 +435,92 @@ var instanceFromJson = JsonSerializer.Deserialize<Order>(orderAsJson);
 //Console.WriteLine(instanceFromJson.GenerateReport());
 
 
-CancelledOrder cancelledOrder = new CancelledOrder(new ShippingProvider(), new[] { new Item { Name = "PS1", Price = 20 } });
+//CancelledOrder cancelledOrder = new CancelledOrder(new ShippingProvider(), new[] { new Item { Name = "PS1", Price = 20 } });
 
-Console.WriteLine(order.ToString());
+//Console.WriteLine(order.ToString());
+//Console.WriteLine("******************");
+
+
+//Console.WriteLine(cancelledOrder.ToString());
+
+
+//void Processor_Completed(object? sender, OrderProcessCompletedEventArgs args)
+//{
+//	//if (args.Order is not null)
+//	if (args.Order is { Total: > 100 })
+//	{
+//		Guid orderNumber = args.Order.OrderNumber;
+
+//		string orderNumberAsString = orderNumber.ToString();
+
+//	}
+
+//	ArgumentNullException.ThrowIfNull(args.Order);
+//	ShippingProvider? aProvider = args.Order.ShippingProvider;
+
+//	//aProvider ??= new ShippingProvider();
+
+//	if (ShippingProviderValidator.ValidateShippingProvider(aProvider))
+//	{
+//		var name = aProvider.Name;
+//	}
+
+
+//}
+
+
+
+//var list = new OrderList(orders);
+
+//var orderFromList = list[0];
+
 Console.WriteLine("******************");
 
 
-Console.WriteLine(cancelledOrder.ToString());
+int[] numbers = new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+//int[] slice = numbers[..2];
+
+//Index start = new Index(5, true);
+
+//var sliceWithoutlastElement = numbers[..^1];
+
+//var sliceWithLastFiveElements = numbers[^5..];
+
+//slice = numbers[start..];
+
+//foreach (var item in sliceWithLastFiveElements)
+//{
+//    Console.WriteLine(item);
+//}
+
+//Console.WriteLine("******************");
+
+
+//var name = "Duder McDudermanson";
+
+//var substring = name[..5];
+
+//Console.WriteLine(substring);
+
+Console.WriteLine("******************");
+
+Span<int> spanOfNumbers = numbers;
+
+spanOfNumbers[0] = 1;
+
+
+foreach (var item in numbers)
+{
+	Console.WriteLine(item);
+}
+
+
+foreach (var item in spanOfNumbers)
+{
+	Console.WriteLine(item);
+}
+
+Console.WriteLine("******************");
+
+

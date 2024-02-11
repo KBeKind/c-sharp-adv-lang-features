@@ -16,17 +16,17 @@ namespace WarehouseManagementSystem.Business
         //public OrderTest OnOrderTest { get; set; }
 
         
-        public Func<Order, bool> OnOrderInitialized { get; set; }
+        public Func<Order, bool>? OnOrderInitialized { get; set; }
 
 
-        public event EventHandler<OrderProcessCompletedEventArgs> OrderProcessCompleted;
+        public event EventHandler<OrderProcessCompletedEventArgs>? OrderProcessCompleted;
         protected virtual void OnOrderProcessCompleted(OrderProcessCompletedEventArgs args)
         {
             OrderProcessCompleted?.Invoke(this, args);
         }
 
 
-        public event EventHandler<OrderCreatedEventArgs> OrderCreated;
+        public event EventHandler<OrderCreatedEventArgs>? OrderCreated;
         protected virtual void OnOrderCreated(OrderCreatedEventArgs args)
         {
             // Console.WriteLine for test only

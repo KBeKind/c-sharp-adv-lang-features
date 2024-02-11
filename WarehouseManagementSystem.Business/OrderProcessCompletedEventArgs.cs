@@ -9,6 +9,6 @@ namespace WarehouseManagementSystem.Business
 {
 	public class OrderProcessCompletedEventArgs : EventArgs
 	{
-		public Order Order { get; set; }
+		public Order? Order { get; set; }
 	}
 }
