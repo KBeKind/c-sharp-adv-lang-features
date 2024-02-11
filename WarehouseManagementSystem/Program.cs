@@ -226,7 +226,7 @@ var instance2 = new
 var totals = orders.Select(order => new { order.Total });
 
 // LINK QUERY SYNTAX
-var totals2 = from anOrder in orders select new { anOrder.Total };
+//var totals2 = from anOrder in orders select new { anOrder.Total };
 
 
 //processor.Process(orders);
@@ -348,7 +348,7 @@ var result = processor.Process(orders);
 //}
 
 
-Console.WriteLine("******************");
+//Console.WriteLine("******************");
 
 
 //var (orderNumber, total, items, averagePrice) = order;
@@ -362,3 +362,40 @@ Console.WriteLine("******************");
 //{
 
 //}
+
+
+Order anOrder = new Order
+{
+	ShippingProvider = new ShippingProvider()
+	{
+		FreightCost = 50
+	},
+	LineItems = new[]
+	{
+		new Item { Name = "PS1", Price = 20 },
+		new Item { Name = "PS2", Price = 25 },
+		new Item { Name = "PS3", Price = 35 },
+		new Item { Name = "PS4", Price = 35 },
+	},
+	
+
+};
+Console.WriteLine("******************");
+
+Console.WriteLine(anOrder.GenerateReport());
+
+PriorityOrder prioOrder = new PriorityOrder
+{
+	ShippingProvider = new ShippingProvider()
+	{
+		FreightCost = 50
+	},
+	LineItems = new[]
+	{
+		new Item { Name = "PS1", Price = 20 },
+	},
+};
+
+Console.WriteLine("******************");
+
+Console.WriteLine(prioOrder.GenerateReport());

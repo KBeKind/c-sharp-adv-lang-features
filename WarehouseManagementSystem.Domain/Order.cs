@@ -31,7 +31,21 @@
 
 	}
 
+
+    public class PriorityOrder : Order { }
+
+    public class ShippedOrder : Order {
+        public DateTime ShippedDate { get; set; }
+    }
+
+    public class CancelledOrder : Order {
+        public DateTime CancelledDate { get; set; }
+    }
+
+
+
     public class ProcessedOrder : Order { }
+
 
     public class Item
     {
